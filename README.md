@@ -20,9 +20,13 @@ Source Model-Changing.net soon available:
 - Updating player templates.
 - Updating creature models.
 
+# TLK - Reforged : Features.
 
+- Photo Mode | CharacterSelect
+  You can enter the photo mode by pressing H and could exit by pressing the same button.
+  Once in the photo mode you can change the available backgrounds by pressing B.
 
 
 # Thanks to
-- __Bset__ for the button to hide the character selection interface.
+- __Bset__ for the base of Photo Mode system interface.
 - __Valkryst__ for Faux-Dynamic Character Selection Panel.
