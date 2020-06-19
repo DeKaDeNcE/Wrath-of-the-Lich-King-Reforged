@@ -25,3 +25,4 @@ Source Model-Changing.net soon available:
 
 # Thanks to
 - __Bset__ for the button to hide the character selection interface.
+- __Valkryst__ for Faux-Dynamic Character Selection Panel.
