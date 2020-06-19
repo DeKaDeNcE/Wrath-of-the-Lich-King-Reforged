@@ -1,7 +1,5 @@
 ![TLK : Refoged Logo](https://github.com/iThorgrim-Hub/Wrath-of-the-Lich-King-Reforged/blob/master/Logo%20Reforged.png)
-# Wrath of the Lich King: Reforged.
-
-
+# Wrath of the Lich King: Reforged
 
 This project aims to make the game that everyone knows more current through a few interface updates.
 
@@ -20,7 +18,7 @@ Source Model-Changing.net soon available:
 - Updating player templates.
 - Updating creature models.
 
-# TLK - Reforged : Features.
+# Features
 
 * Photo Mode | CharacterSelect
   * You can enter the photo mode by pressing H and could exit by pressing the same button.
