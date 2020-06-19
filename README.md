@@ -19,3 +19,9 @@ Source Model-Changing.net soon available:
 - Update of spell animations.
 - Updating player templates.
 - Updating creature models.
+
+
+
+
+# Thanks to
+- Bset for the button to hide the character selection interface.
