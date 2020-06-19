@@ -154,17 +154,6 @@
 		<Frames>
 			<Frame name="CharacterSelectUI" setAllPoints="true" enableMouse="true">
 				<Layers>
-					<Layer level="ARTWORK">
-						<FontString name="CharSelectCharacterName" inherits="GlueFontNormalHuge">
-							<Anchors>
-								<Anchor point="BOTTOM">
-									<Offset>
-										<AbsDimension x="0" y="100"/>
-									</Offset>
-								</Anchor>
-							</Anchors>
-						</FontString>
-					</Layer>
 					<Layer level="OVERLAY">
 						<Texture name="CharacterSelectLogo" file="Interface\Glues\Common\Glues-WoW-WotLKLogo">
 							<Size>
@@ -200,90 +189,6 @@
 								CharacterSelect_DeathKnightSwap(self);
 							</OnUpdate>
 						</Scripts>
-					</Button>
-					<Button name="CharacterSelectRotateLeft">
-						<Size>
-							<AbsDimension x="50" y="50"/>
-						</Size>
-						<Anchors>
-							<Anchor point="TOP" relativeTo="CharSelectEnterWorldButton" relativePoint="BOTTOM">
-								<Offset>
-									<AbsDimension x="-15" y="19"/>
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<HitRectInsets>
-							<AbsInset left="13" right="13" top="10" bottom="13"/>
-						</HitRectInsets>
-						<Scripts>
-							<OnLoad>
-								self:RegisterForClicks("LeftButtonDown", "LeftButtonUp");
-							</OnLoad>
-							<OnClick>
-								PlaySound("igInventoryRotateCharacter");
-							</OnClick>
-							<OnUpdate>
-								CharacterSelectRotateLeft_OnUpdate(self);
-							</OnUpdate>
-						</Scripts>
-						<NormalTexture file="Interface\Glues\CharacterCreate\UI-RotationRight-Big-Up">
-							<TexCoords left="1.0" right="0" top="0" bottom="1.0"/>
-						</NormalTexture>
-						<PushedTexture file="Interface\Glues\CharacterCreate\UI-RotationRight-Big-Down">
-							<TexCoords left="1.0" right="0" top="0" bottom="1.0"/>
-						</PushedTexture>
-						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD">
-							<Size>
-								<AbsDimension x="30" y="30"/>
-							</Size>
-							<Anchors>
-								<Anchor point="CENTER">
-									<Offset>
-										<AbsDimension x="0" y="0"/>
-									</Offset>
-								</Anchor>
-							</Anchors>
-						</HighlightTexture>
-					</Button>
-					<Button name="CharacterSelectRotateRight">
-						<Size>
-							<AbsDimension x="50" y="50"/>
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativeTo="CharacterSelectRotateLeft" relativePoint="RIGHT">
-								<Offset>
-									<AbsDimension x="-19" y="0"/>
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<HitRectInsets>
-							<AbsInset left="13" right="13" top="10" bottom="13"/>
-						</HitRectInsets>
-						<Scripts>
-							<OnLoad>
-								self:RegisterForClicks("LeftButtonDown", "LeftButtonUp");
-							</OnLoad>
-							<OnClick>
-								PlaySound("igInventoryRotateCharacter");
-							</OnClick>
-							<OnUpdate>
-								CharacterSelectRotateRight_OnUpdate(self);
-							</OnUpdate>
-						</Scripts>
-						<NormalTexture file="Interface\Glues\CharacterCreate\UI-RotationRight-Big-Up"/>
-						<PushedTexture file="Interface\Glues\CharacterCreate\UI-RotationRight-Big-Down"/>
-						<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD">
-							<Size>
-								<AbsDimension x="30" y="30"/>
-							</Size>
-							<Anchors>
-								<Anchor point="CENTER">
-									<Offset>
-										<AbsDimension x="0" y="0"/>
-									</Offset>
-								</Anchor>
-							</Anchors>
-						</HighlightTexture>
 					</Button>
 					<Button name="CharacterSelectBackButton" inherits="GlueButtonSmallTemplate" text="BACK">
 						<Size>
@@ -834,6 +739,157 @@
 					</OnUpdate>
 				</Scripts>
 			</Frame>
+			<Frame name="CharacterPhotoMode" setAllPoints="true" hidden="true">
+				<Size>
+					<AbsDimension x="200" y="460"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="LEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="GameRoomBillingFrameText" inherits="GlueFontNormalSmall" justifyH="LEFT">
+							<Size>
+								<AbsDimension x="235" y="0"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="13" y="-10"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Backdrop bgFile="Interface\Glues\Common\Glue-Tooltip-Background" edgeFile="Interface\Glues\Common\Glue-Tooltip-Border" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="10" right="5" top="4" bottom="9"/>
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="16"/>
+					</EdgeSize>
+				</Backdrop>
+				<Frames>
+					<Button name="ChangeBackground#1" inherits="GlueButtonTemplate" text="Background #1" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="LEFT" x="4" y="200"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(1);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#2" inherits="GlueButtonTemplate" text="Background #2" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="160"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(2);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#3" inherits="GlueButtonTemplate" text="Background #3" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="110"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(3);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#4" inherits="GlueButtonTemplate" text="Background #4" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="70"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(4);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#5" inherits="GlueButtonTemplate" text="Background #5" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="20"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(5);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#6" inherits="GlueButtonTemplate" text="Background #6" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="-20"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(6);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#7" inherits="GlueButtonTemplate" text="Background #7" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="-70"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(7);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#8" inherits="GlueButtonTemplate" text="Background #8" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="-110"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(8);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#9" inherits="GlueButtonTemplate" text="Background #9" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="-160"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(9);
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ChangeBackground#10" inherits="GlueButtonTemplate" text="Background #10" parent="CharacterPhotoMode">
+						<Anchors>
+							<Anchor point="CENTER" x="4" y="-200"/>
+						</Anchors>
+						<Size x="200" y="50"/>
+						<Scripts>
+							<OnClick>
+								CharacterSelect_ChangeBackground(10);
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
 			<Frame name="BillingWarningFrame" hidden="true">
 				<Layers>
 					<Layer level="ARTWORK">
@@ -923,6 +979,7 @@
 			</OnUpdate>
 			<OnKeyDown>
 				CharacterSelect_OnKeyDown(self,key);
+				CharacterSelect_ShoworHide(self,key);
 			</OnKeyDown>
 			<OnEvent>
 				CharacterSelect_OnEvent(self, event, ...);
@@ -930,6 +987,16 @@
 			<OnUpdateModel>
 				CharacterSelect_UpdateModel(self);
 			</OnUpdateModel>
+			<OnMouseDown>
+				CharacterSelectFrame_OnMouseDown(button);
+			</OnMouseDown>
+			<OnMouseUp>
+				CharacterSelectFrame_OnMouseUp(button);
+			</OnMouseUp>
+			<OnUpdate>
+				CharacterSelectFrame_OnUpdate();
+				CharacterSelect_OnUpdate();
+			</OnUpdate>
 		</Scripts>
 	</ModelFFX>
 	<Frame name="CharacterDeleteDialog" toplevel="true" parent="GlueParent" setAllPoints="true" enableMouse="true" enableKeyboard="true" frameStrata="DIALOG" hidden="true">
@@ -1010,7 +1077,7 @@
 								DeleteCharacter(CharacterSelect.selectedIndex);
 								CharacterDeleteDialog:Hide();
 								PlaySound("gsTitleOptionOK");
-							</OnClick> 
+							</OnClick>
 							<OnUpdate>
 								CharacterSelect_DeathKnightSwap(self);
 							</OnUpdate>
@@ -1084,7 +1151,7 @@
 						else
 							CharacterDeleteButton1:Disable();
 						end
-					</OnTextChanged> 
+					</OnTextChanged>
 					<OnEnterPressed>
 						if ( CharacterDeleteButton1:IsEnabled() == 1 ) then
 							DeleteCharacter(CharacterSelect.selectedIndex);
@@ -1186,7 +1253,7 @@
 								if ( RenameCharacter(CharacterSelect.selectedIndex, CharacterRenameEditBox:GetText()) ) then
 									CharacterRenameDialog:Hide();
 								end
-							</OnClick> 
+							</OnClick>
 							<OnUpdate>
 								CharacterSelect_DeathKnightSwap(self);
 							</OnUpdate>

@@ -22,7 +22,8 @@ function CharacterSelect_OnLoad(self)
 	self:RegisterEvent("SELECT_FIRST_CHARACTER");
 	self:RegisterEvent("SUGGEST_REALM");
 	self:RegisterEvent("FORCE_RENAME_CHARACTER");
-
+	self:EnableKeyboard(true);
+	CharacterPhotoMode:Hide();
 	-- CharacterSelect:SetModel("Interface\\Glues\\Models\\UI_Orc\\UI_Orc.m2");
 
 	-- local fogInfo = CharModelFogInfo["ORC"];
@@ -38,6 +39,49 @@ function CharacterSelect_OnLoad(self)
 	CharacterSelectCharacterFrame:SetBackdropColor(backdropColor[4], backdropColor[5], backdropColor[6], 0.85);
 
 	UpdateCharacterSelectionPanel();
+end
+
+-- Custom function PHOTO
+function CharacterSelect_ChangeBackground(id)
+	local test = {}
+	local numChars = GetNumCharacters();
+	local race = {
+		[1] = {name = "Human", active = 1},
+		[2] = {name = "Orc", active = 0},
+		[3] = {name = "Dwarf", active = 0},
+		[4] = {name = "Scourge", active = 0},
+		[5] = {name = "NightElf", active = 0},
+		[6] = {name = "Tauren", active = 0},
+		[7] = {name = "Gnome", active = 0},
+		[8] = {name = "Troll", active = 0},
+		[9] = {name = "Draenei", active = 0},
+		[10] = {name = "BloodElf", active = 0},
+	};
+	SetCharSelectBackground("Interface\\Glues\\Models\\UI_"..string.upper(race[id].name).."\\UI_"..string.upper(race[id].name)..".m2");
+	SelectCharacter(CharacterSelect.selectedIndex);
+	SetLighting(CharacterSelect, race[id].name);
+end
+
+function CharacterSelect_ShoworHide(self, key)
+	if (key == "H" or key == "h") then
+		if (CharacterSelectUI:IsShown() and CharacterSelectUI:IsVisible()) then
+			CharacterSelectUI:Hide();
+		else
+			CharacterSelectUI:Show();
+			CharacterPhotoMode:Hide();
+			CharacterSelect_OnUpdate(1);
+		end
+	elseif (key == "B" or key == "b") then
+		if (CharacterSelectUI:IsShown() and CharacterSelectUI:IsVisible()) then
+			CharacterPhotoMode:Hide();
+		elseif (not CharacterSelectUI:IsShown() and not CharacterSelectUI:IsVisible()) then
+			if (CharacterPhotoMode:IsShown())then
+				CharacterPhotoMode:Hide();
+			else
+				CharacterPhotoMode:Show();
+			end
+		end
+	end
 end
 
 function CharacterSelect_OnShow()
@@ -257,13 +301,13 @@ function CharacterSelect_OnEvent(self, event, ...)
 		UpdateAddonButton();
 	elseif ( event == "CHARACTER_LIST_UPDATE" ) then
 		UpdateCharacterList();
-		CharSelectCharacterName:SetText(GetCharacterInfo(self.selectedIndex));
+		-- CharSelectCharacterName:SetText(GetCharacterInfo(self.selectedIndex));
 	elseif ( event == "UPDATE_SELECTED_CHARACTER" ) then
 		local index = ...;
 		if ( index == 0 ) then
-			CharSelectCharacterName:SetText("");
+			-- CharSelectCharacterName:SetText("");
 		else
-			CharSelectCharacterName:SetText(GetCharacterInfo(index));
+			-- CharSelectCharacterName:SetText(GetCharacterInfo(index));
 			self.selectedIndex = index;
 		end
 		UpdateCharacterSelection(self);
