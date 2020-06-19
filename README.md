@@ -24,4 +24,4 @@ Source Model-Changing.net soon available:
 
 
 # Thanks to
-- Bset for the button to hide the character selection interface.
+- __Bset__ for the button to hide the character selection interface.
