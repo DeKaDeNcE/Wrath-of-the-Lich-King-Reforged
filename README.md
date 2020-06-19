@@ -21,8 +21,8 @@ Source Model-Changing.net soon available:
 # Features
 
 * Photo Mode | CharacterSelect
-  * You can enter the photo mode by pressing H and could exit by pressing the same button.
-  * Once in the photo mode you can change the available backgrounds by pressing B.
+  * You can enter the photo mode by pressing H and could exit by pressing the same button |- https://imgur.com/a/FN4o1ch
+  * Once in the photo mode you can change the available backgrounds by pressing B |- https://imgur.com/a/dDssMzs
 
 
 # Thanks to
