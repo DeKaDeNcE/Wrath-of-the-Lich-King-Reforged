@@ -23,9 +23,8 @@ Source Model-Changing.net soon available:
 # TLK - Reforged : Features.
 
 * Photo Mode | CharacterSelect
-
-You can enter the photo mode by pressing H and could exit by pressing the same button.
-Once in the photo mode you can change the available backgrounds by pressing B.
+  * You can enter the photo mode by pressing H and could exit by pressing the same button.
+  * Once in the photo mode you can change the available backgrounds by pressing B.
 
 
 # Thanks to
