@@ -9,9 +9,14 @@ Currently available :
 - Updating the character creation screen.
 - Update all character selection screens.
 
+- Update all start item display.
+- Adding some new Enchantments Effect (Visual)
+
 Coming soon :
 - Spell icon updates.
 - Update of the interface (Spell bar, bags, information during levelUp, picking up items etc.).
+
+- Start shield from SL (Shadowlands).
 
 Source Model-Changing.net soon available:
 - Update of spell animations.
